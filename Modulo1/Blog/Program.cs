@@ -22,12 +22,18 @@ namespace Blog
                 // context.SaveChanges();
 
                 // UPDATE
-                var tag = context.Tags.FirstOrDefault(x => x.Id == 5);
-                tag.Name = ".NET";
-                tag.Slug = "dotnet";
+                // var tag = context.Tags.FirstOrDefault(x => x.Id == 5);
+                // tag.Name = ".NET";
+                // tag.Slug = "dotnet";
 
-                context.Update(tag);
-                context.SaveChanges();
+                // context.Update(tag);
+                // context.SaveChanges();
+
+                // DELETE
+                // var tag = context.Tags.FirstOrDefault(x => x.Id == 5);
+                
+                // context.Remove(tag);
+                // context.SaveChanges();
             }
         }
     }
