@@ -11,15 +11,22 @@ namespace Blog
         {
             using (var context = new BlogDataContext())
             {
-                var tag = new Tag
-                {
-                    Name = "ASP.NET",
-                    Slug = "aspnet"
-                };
+                // CREATE
+                // var tag = new Tag
+                // {
+                //     Name = "ASP.NET",
+                //     Slug = "aspnet"
+                // };
 
-                context.Tags.Add(tag);
+                // context.Tags.Add(tag);
+                // context.SaveChanges();
 
-                // Salva no banco de dados
+                // UPDATE
+                var tag = context.Tags.FirstOrDefault(x => x.Id == 5);
+                tag.Name = ".NET";
+                tag.Slug = "dotnet";
+
+                context.Update(tag);
                 context.SaveChanges();
             }
         }
