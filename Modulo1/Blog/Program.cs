@@ -18,6 +18,12 @@ namespace Blog
                 //     Slug = "aspnet"
                 // };
 
+                // var tag = new Tag
+                // {
+                //     Name = ".NET",
+                //     Slug = "dotnet"
+                // };
+
                 // context.Tags.Add(tag);
                 // context.SaveChanges();
 
@@ -31,9 +37,18 @@ namespace Blog
 
                 // DELETE
                 // var tag = context.Tags.FirstOrDefault(x => x.Id == 5);
-                
+
                 // context.Remove(tag);
                 // context.SaveChanges();
+
+                // TOLIST
+                // Deve ser colocado sempre no final da query para não prejudicar a perfomance
+                var tags = context.Tags.ToList();
+
+                foreach (var tag in tags)
+                {
+                    Console.WriteLine(tag.Name);
+                }
             }
         }
     }
