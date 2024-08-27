@@ -2,6 +2,7 @@
 using System.Linq;
 using Blog.Data;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog
 {
@@ -41,14 +42,19 @@ namespace Blog
                 // context.Remove(tag);
                 // context.SaveChanges();
 
-                // TOLIST
+                // TOLIST (Executa a query)
                 // Deve ser colocado sempre no final da query para não prejudicar a perfomance
-                var tags = context.Tags.ToList();
+                var tags = context
+                    .Tags
+                    .AsNoTracking()
+                    .ToList();
 
                 foreach (var tag in tags)
                 {
                     Console.WriteLine(tag.Name);
                 }
+
+                // AsNoTracking: ganho de performance na leitura, upsar APENAS para visualização dos dados
             }
         }
     }
