@@ -44,17 +44,26 @@ namespace Blog
 
                 // TOLIST (Executa a query)
                 // Deve ser colocado sempre no final da query para não prejudicar a perfomance
-                var tags = context
+                // var tags = context
+                //     .Tags
+                //     .AsNoTracking()
+                //     .ToList();
+
+                // foreach (var tag in tags)
+                // {
+                //     Console.WriteLine(tag.Name);
+                // }
+
+                // AsNoTracking: ganho de performance na leitura, usar APENAS para visualização dos dados
+
+                var tag = context
                     .Tags
                     .AsNoTracking()
-                    .ToList();
+                    .FirstOrDefault(x => x.Id == 6);
 
-                foreach (var tag in tags)
-                {
-                    Console.WriteLine(tag.Name);
-                }
+                Console.WriteLine(tag?.Name);
 
-                // AsNoTracking: ganho de performance na leitura, upsar APENAS para visualização dos dados
+                // Single/SingleOrDefault: da erro se tiver mais de um erro com o mesmo Id
             }
         }
     }
