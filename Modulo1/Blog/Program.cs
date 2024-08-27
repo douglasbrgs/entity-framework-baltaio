@@ -8,10 +8,10 @@ namespace Blog
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            var context = new BlogDataContext();
-            context.Categories.ToList();
+            using (var context = new BlogDataContext())
+            {
+                
+            }
         }
     }
 }
