@@ -46,13 +46,14 @@ namespace Blog
             var posts = context
                 .Posts
                 .AsNoTracking()
-                .Include(x => x.Author)
+                .Include(x => x.Author) // Faz o INNER JOIN
+                .Include(x => x.Category)
                 .OrderByDescending(x => x.LastUpdateDate)
                 .ToList();
 
             foreach (var post in posts)
             {
-                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name}");
+                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category?.Name}");
             }
         }
     }
