@@ -43,18 +43,31 @@ namespace Blog
             // context.Posts.Add(post);
             // context.SaveChanges();
 
+            // var posts = context
+            //     .Posts
+            //     .AsNoTracking()
+            //     .Include(x => x.Author) // Faz o INNER JOIN
+            //     .Include(x => x.Category)
+            //     .OrderByDescending(x => x.LastUpdateDate)
+            //     .ToList();
+
+            // foreach (var post in posts)
+            // {
+            //     Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category?.Name}");
+            // }
+
+
             var posts = context
                 .Posts
-                .AsNoTracking()
-                .Include(x => x.Author) // Faz o INNER JOIN
+                .Include(x => x.Author)
                 .Include(x => x.Category)
                 .OrderByDescending(x => x.LastUpdateDate)
-                .ToList();
+                .FirstOrDefault();
 
-            foreach (var post in posts)
-            {
-                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category?.Name}");
-            }
+            posts.Author.Name = "Teste";
+
+            context.Update(posts);
+            context.SaveChanges();
         }
     }
 }
