@@ -15,6 +15,18 @@ namespace Blog.Data.Mappings
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn(); // PRIMARY KEY IDENTITY (1, 1)
+
+            builder.Property(x => x.Name)
+                .IsRequired() // NOT NULL
+                .HasColumnName("Name")
+                .HasColumnType("NVARCHAR")
+                .HasMaxLength(80);
+
+            builder.Property(x => x.Slug)
+               .IsRequired()
+               .HasColumnName("Slug")
+               .HasColumnType("VARCHAR")
+               .HasMaxLength(80);
         }
     }
 }
