@@ -1,4 +1,5 @@
 using System;
+using Blog.Data.Mappings;
 using Blog.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,14 @@ namespace Blog.Data
         public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-         => options.UseSqlServer("Server=localhost,1433;Database=Blog;User ID=sa;Password=1q2w3e4r@#$;TrustServerCertificate=True");
+         => options.UseSqlServer("Server=localhost,1433;Database=BlogFluentMap;User ID=sa;Password=1q2w3e4r@#$;TrustServerCertificate=True");
+
+        // Utilizando o mapeamento criado
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new PostMap());
+        }
     }
 }
