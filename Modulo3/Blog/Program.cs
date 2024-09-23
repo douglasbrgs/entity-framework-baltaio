@@ -12,18 +12,18 @@ namespace Blog
         {
             using var context = new BlogDataContext();
 
-            context.Users.Add(new User
-            {
-                Bio = "Mestre em Engenharia de Computação",
-                Email = "douglasborges19@gmail.com",
-                Image = "https://borges.br",
-                Name = "Douglas Borges",
-                PasswordHash = "1234",
-                Slug = "douglas-borges",
-                Github = "douglasbrgs"
-            });
+            // context.Users.Add(new User
+            // {
+            //     Bio = "Mestre em Engenharia de Computação",
+            //     Email = "douglasborges19@gmail.com",
+            //     Image = "https://borges.br",
+            //     Name = "Douglas Borges",
+            //     PasswordHash = "1234",
+            //     Slug = "douglas-borges",
+            //     Github = "douglasbrgs"
+            // });
 
-            context.SaveChanges();
+            // context.SaveChanges();
 
             // var user = context.Users.FirstOrDefault();
             // var category = new Category
@@ -43,6 +43,9 @@ namespace Blog
             // };
             // context.Posts.Add(post);
             // context.SaveChanges();
+
+            var post = context.Posts.FirstOrDefault();
+            var post2 = context.Posts.AsNoTracking();
         }
     }
 }
